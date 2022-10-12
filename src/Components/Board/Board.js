@@ -1,643 +1,205 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, Container, Row, Col, Button, Form} from 'react-bootstrap';
+import {collection, onSnapshot} from 'firebase/firestore'
+import {db} from "../../firebase"
+import {Card, Container, Row, Col, Form} from 'react-bootstrap';
+import './Board.css';
 
 
+function Board()  {
 
+  const [tablero, setTablero] = useState([])
+  useEffect(() => {
+    const tablerocolref = collection(db, 'Tablero')
+    const getTablero = onSnapshot(tablerocolref, snapshot => {
+      setTablero(snapshot.docs.map(doc=> ({id: doc.id, data: doc.data() })))
+    })
+  return () => {
+    getTablero()
+  }},[])
 
-class Player{
-  constructor(name,number,fouls){
-    this.name=name;
-    this.number=number;
-    this.fouls=fouls;
-  }
-}
+  const [Equipo1, setEquipo1] = useState([])
+  useEffect(() => {
+    const Equipoocolref = collection(db, 'Equipo1')
+    const getEquipo1 = onSnapshot(Equipoocolref, snapshot => {
+      setEquipo1(snapshot.docs.map(doc=> ({id: doc.id, data: doc.data() })))
+    })
+  return () => {
+    getEquipo1()
+  }},[])
 
-class Team{
-  constructor(name) {
-    this.name = name;
-    this.player1 =  new Player("jugador1", 1,0);
-    this.player2 =  new Player("jugador2", 2,0);
-    this.player3 =  new Player("jugador3", 3,0);
-    this.player4 =  new Player("jugador4", 4,0);
-    this.player5 =  new Player("jugador5", 5,0);
-    this.player6 =  new Player("jugador6", 6,0);
-    this.player7 =  new Player("jugador7", 7,0);
-    this.player8 =  new Player("jugador8", 8,0);
+  const [Equipo2, setEquipo2] = useState([])
+  useEffect(() => {
+    const Equipoocolref = collection(db, 'Equipo2')
+    const getEquipo2 = onSnapshot(Equipoocolref, snapshot => {
+      setEquipo2(snapshot.docs.map(doc=> ({id: doc.id, data: doc.data() })))
+    })
+  return () => {
+    getEquipo2()
+  }},[])
 
-  }
-}
+  const [Player1, setPlayer1] = useState([])
+  useEffect(() => {
+    const Jugador1colref = collection(db, 'Jugador1')
+    const getplayer1 = onSnapshot(Jugador1colref, snapshot => {
+      setPlayer1(snapshot.docs.map(doc=> ({id: doc.id, data: doc.data() })))
+    })
+  return () => {
+    getplayer1()
+  }},[])
 
+  const [Player2, setPlayer2] = useState([])
+  useEffect(() => {
+    const Jugador2colref = collection(db, 'Jugador2')
+    const getplayer2 = onSnapshot(Jugador2colref, snapshot => {
+      setPlayer2(snapshot.docs.map(doc=> ({id: doc.id, data: doc.data() })))
+    })
+  return () => {
+    getplayer2()
+  }},[])
 
-class Board extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { NameT1 : '', NameT1J1 : '',NameT1J7 : '',NameT1J2 : '',NameT1J3 : '',NameT1J4 : '',NameT1J8 : '',NameT1J5 : '',NameT1J6 : '',NameT2 : '', NameT2J1 : '',NameT2J7 : '',NameT2J2 : '',NameT2J3 : '',NameT2J4 : '',NameT2J8 : '',NameT2J5 : '',NameT2J6 : '', team1: new Team('Team 1'), team2: new Team('Team 2')}
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-    };
-
-    handleChangeT1(event) {
-    const value = event.target.value;
-    this.state.team1.name = value;
-    }
-    handleChangeT2(event) {
-      const value = event.target.value;
-      this.setState({NameT2 : value})
-  
-    }
-    handleChangeT1J1(event) {
-      const value = event.target.value;
-      this.setState({NameT1J1 : value})
-  
-    }
-    handleChangeT1J2(event) {
-      const value = event.target.value;
-      this.setState({NameT1J2 : value})
-  
-    }
-    handleChangeT1J3(event) {
-      const value = event.target.value;
-      this.setState({NameT1J3 : value})
-  
-    }
-    handleChangeT1J4(event) {
-      const value = event.target.value;
-      this.setState({NameT1J4 : value})
-  
-    }
-    handleChangeT1J5(event) {
-      const value = event.target.value;
-      this.setState({NameT1J5 : value})
-  
-    }
-    handleChangeT1J6(event) {
-      const value = event.target.value;
-      this.setState({NameT1J6 : value})
-  
-    }
-    handleChangeT1J7(event) {
-      const value = event.target.value;
-      this.setState({NameT1J7 : value})
-  
-    }
-    handleChangeT1J8(event) {
-      const value = event.target.value;
-      this.setState({NameT1J8 : value})
-  
-    }
-    handleChangeT2J1(event) {
-      const value = event.target.value;
-      this.setState({NameT2J1 : value})
-  
-    }
-    handleChangeT2J2(event) {
-      const value = event.target.value;
-      this.setState({NameT2J2 : value})
-  
-    }
-    handleChangeT2J3(event) {
-      const value = event.target.value;
-      this.setState({NameT2J3 : value})
-  
-    }
-    handleChangeT2J4(event) {
-      const value = event.target.value;
-      this.setState({NameT2J4 : value})
-  
-    }
-    handleChangeT2J5(event) {
-      const value = event.target.value;
-      this.setState({NameT2J5 : value})
-  
-    }
-    handleChangeT2J6(event) {
-      const value = event.target.value;
-      this.setState({NameT2J6 : value})
-  
-    }
-    handleChangeT2J7(event) {
-      const value = event.target.value;
-      this.setState({NameT2J7 : value})
-  
-    }
-    handleChangeT2J8(event) {
-      const value = event.target.value;
-      this.setState({NameT2J8 : value})
-  
-    }
-
-    handleSubmit() {
-      this.state.team1.name = this.state.NameT1;
-    }
-
-    render() {
-      
         return (
           <div>
-            <Container>
-
+          <Container>
             <Row>
             <Col>
-          <Card>
-          <Card.Body>
-            <Card.Title>Equipo 1 </Card.Title>
+            <Card className="rightCard">
+              <Card.Body>
+              <Card.Title className="NameEq">LOCAL </Card.Title>
+              <Card.Title className="NameEq1">{Equipo1.map(equipo1=> (<div>{equipo1.data.Name}</div>))}</Card.Title>
 
-            <Card.Text>
-              Nombre del equipo: 
-              <label>
-            <input type="text"  size="10" value={this.state.team1.name} onChange={this.handleChangeT1.bind(this)} />
-            </label>
-            </Card.Text>
-            
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player1.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player1.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
-
-
-            </Card.Text>
-            
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player2.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player2.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
+              <Card.Text>
+              <Row> 
+                <Col lg={2} md={2} sm={2} xs={2}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.nume1j1))} disabled/>
+                </Col>
+                <Col lg={10} md={6} sm={12} xs={12}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.name1j1))} disabled/>
+                </Col>
+              </Row>
+              <Form >
+                {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                <Form.Check className="Container" inline name="group1" type={type}id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type}id={`inline-${type}-2`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                </div>))}
+              </Form>
             </Card.Text>
 
             <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player3.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player3.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
+              <Row> 
+                <Col lg={2} md={2} sm={2} xs={2}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.nume1j2))} disabled/>
+                </Col>
+                <Col lg={10} md={6} sm={12} xs={12}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.name1j2))} disabled/>
+                </Col>
+              </Row>
+              <Form >
+                {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                <Form.Check className="Container" inline name="group1" type={type}id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type}id={`inline-${type}-2`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                </div>))}
+              </Form>
             </Card.Text>
+            </Card.Body>
+            </Card>
+          </Col>
 
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player4.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player4.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
-            </Card.Text>
 
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player5.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player5.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player6.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player6.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team1.player7.number} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text" value={this.state.team1.player7.name} onChange={this.handleChangeT1J1.bind(this)} />
-            </label>
-            <Form>
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-2`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      <Form.Check
-        inline
-        name="group1"
-        type={type}
-        id={`inline-${type}-1`}
-      />
-      
-    </div>
-  ))}
-</Form>
-            </Card.Text>
-
-           
-          </Card.Body>
+        <Col> 
+        <Card className='Center'>
+        <Card.Body>
+          <Card.Title className="NameTor">Torneo</Card.Title>
+          <Container>
+            <Row><Col className='Points'>{tablero.map(table=> (<div>{table.data.PuntacionEq1}</div>))}</Col><Col></Col>
+            <Col className='Points'>{tablero.map(table=> (<div>{table.data.PuntacionEq2}</div>))}</Col></Row>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Row><Col className='Cuarto'></Col></Row>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+          </Container>
+        </Card.Body>
         </Card>
         </Col>
-        <Col> 
-        <Card>
-        <Card.Header>Torneo </Card.Header>
-        <Card.Body>
-          <Container>
-            <Row><Col><h1>100</h1></Col><Col></Col><Col><h1>100</h1></Col></Row>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <Row><Col></Col><Col><h1>4</h1></Col><Col></Col></Row>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            
-            
-            </Container>
-        </Card.Body>
-      </Card>
-        </Col>
         <Col>
-        <Card>
-          <Card.Body>
-            <Card.Title>Equipo 2 </Card.Title>
 
-            <Card.Text>
-              Nombre del equipo: 
-              <label>
-            <input type="text"  size="10" value={this.state.team2.name} onChange={this.handleChange} />
-            </label>
+
+        <Card className=  "rightCard" >
+        <Card.Body>
+              <Card.Title className="NameEq">VISITANTE </Card.Title>
+              <Card.Title className="NameEq1">{Equipo2.map(equipo2=> (<div>{equipo2.data.Name}</div>))}</Card.Title>
+
+              <Card.Text>
+              <Row> 
+                <Col lg={2} md={1} sm={1} xs={1}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.nume2j1))} disabled/>
+                </Col>
+                <Col lg={10} md={6} sm={12} xs={12}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.name2j1))} disabled />
+                </Col>
+              </Row>
+              <Form >
+                {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                <Form.Check className="Container" inline name="group1" type={type}id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type}id={`inline-${type}-2`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                </div>))}
+              </Form>
             </Card.Text>
-           
-
             <Card.Text>
-            Num:&emsp;&emsp;&emsp;&emsp;&emsp;Nombre:&emsp;&emsp;&emsp;&emsp;&emsp;Foul:
-        
-            <label>
-            <input type="text"size="1" value={this.state.team2.player1.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player1.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player1.fouls} onChange={this.handleChange} />
-            </label>
-            
-            </Card.Text>
-            
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player2.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player2.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player2.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player3.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player3.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player3.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player4.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player4.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player4.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player5.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player5.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player5.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player6.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player6.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player6.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player7.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player7.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player7.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-            <Card.Text>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player8.number} onChange={this.handleChange} />
-            </label>
-              <label>
-            <input type="text" value={this.state.team2.player8.name} onChange={this.handleChange} />
-            </label>
-            <label>
-            <input type="text"size="1" value={this.state.team2.player8.fouls} onChange={this.handleChange} />
-            </label>
-            </Card.Text>
-
-           
-          </Card.Body>
+              <Row> 
+                <Col lg={2} md={1} sm={1} xs={1}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.nume2j2))} disabled/>
+                </Col>
+                <Col lg={10} md={6} sm={12} xs={12}>
+                  <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.name2j2))} disabled />
+                </Col>
+              </Row>
+              <Form >
+                {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                <Form.Check className="Container" inline name="group1" type={type}id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type}id={`inline-${type}-2`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                <Form.Check inline name="group1" type={type} id={`inline-${type}-1`}/>
+                </div>))}
+              </Form>
+            </Card.Text>            
+            </Card.Body>
         </Card>
         </Col>
         </Row>
         </Container>
-        <h1>{this.state.NameT1}</h1>
-        <Button variant="success"  href="/Board" >Registrar</Button>
-        <h1>{this.state.team1.name}</h1>
         
         </div>
         );
 
-    }
 }
 
 export default Board;

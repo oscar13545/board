@@ -1,6 +1,6 @@
 import './App.css';
 import Board from './Components/Board/Board';
-import ShowBoard from './Components/ShowBoard/ShowBoard';
+import ShowBoard from './Components/ShowBoard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
@@ -9,13 +9,11 @@ function App() {
   return (
 
     <Router>
-      
       <br/>
         <Routes>
-          
-          <Route exact path="/" element={<Board/>}/>
+          <Route exact path="/" element={<div className='App'><Board/></div>}/>
           <Route exact path="/home" element={<Board/>}/>
-          <Route exact path="/Board" element={<ShowBoard/>}/>
+          <Route exact path="/Board" element={<div className='App'><ShowBoard/></div>}/>
         </Routes>
     </Router>
     
