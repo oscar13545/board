@@ -8,6 +8,7 @@ import { Button, Navbar, Container, Nav, Alert, Form, Row, Col} from 'react-boot
 function RealBoard()  {
 
     const [tablero, setTablero] = useState([])
+    console.log(tablero);
     function handleSubmitc1(e) {
         e.preventDefault()
         const jugador1ocolref = doc(db, 'Tablero', '1')
@@ -249,15 +250,13 @@ function RealBoard()  {
       </Navbar>
     <br/>
     <h2>Equipo Local: </h2>
-    <Row>
-    <Col>
+
     <Button variant="light" onClick={handleSubmite1p1}>Mas 1 punto</Button>
-    </Col><Col>
+    
     <Button variant="light" onClick={handleSubmite1p2}>Mas 2 punto</Button>
-    </Col><Col>
+   
     <Button variant="light" onClick={handleSubmite1p3}>Mas 3 punto</Button>
-    </Col>
-    </Row>
+   
     <br/>
     <br/>
     <h2>Equipo Visitante: </h2>
@@ -312,7 +311,7 @@ function RealBoard()  {
 
       {!show && <Button  variant="light" onClick={() => setShow(true)}>Editar</Button>}
 
-      {tablero}
+   
     </div>
   );  
 
