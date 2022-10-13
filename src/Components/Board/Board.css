@@ -46,20 +46,21 @@ body{
 .Points {
     color: red!important;
     text-align: center !important;
-    font-size: 100px;
+    border: rgb(47, 47, 48) !important;
+    font-size: 120px;
     font-family: 'DS-Digital', sans-serif;
-    margin: auto;
-    background: rgb(47, 47, 48) ;
+    background: rgb(47, 47, 48) !important;
 }
 
 .Cuarto {
     color: orange!important;
     text-align: center !important;
-    font-size: 100px;
+    font-size: 70px;
+    background: rgb(47, 47, 48) !important;
     font-family: 'DS-Digital', sans-serif;
-   
-    margin: 1px 125px 1px 125px;
+    border: rgb(47, 47, 48) !important;
+    margin: 1px 1px 100px 150px;
     background: rgb(47, 47, 48) ;
-    width: 66%;
+    width: 30%;
 
 }

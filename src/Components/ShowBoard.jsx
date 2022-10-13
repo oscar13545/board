@@ -2,34 +2,10 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { doc, updateDoc} from 'firebase/firestore'
 import {db} from "../firebase"
-import { Button, Card, CardGroup, Form } from 'react-bootstrap';
+import { Button, Card, CardGroup, Form, Navbar, Container, Nav } from 'react-bootstrap';
 
 
 function ShowBoard()  {
-  /*
-  const [tablero, setTablero] = useState([])
-
-  useEffect(() => {
-    getTablero()
-  },[])
-
-  useEffect(() => {
-    console.log(tablero)
-  }, [tablero])
-
-  function getTablero() {
-    const tablerocolref = collection(db, 'Jugador1')
-    getDocs(tablerocolref)
-      .then(response => {
-        const table = response.docs.map(doc=>({
-          data: doc.data(),
-          id: doc.id,
-        }))
-        setTablero(table)
-      }) 
-      .catch(error => console.log(error.massage))
-  } 
-  */
 
   const[name1j1, setName1j1] = useState('')
   const[nume1j1, setNume1j1] = useState('')
@@ -114,9 +90,18 @@ function ShowBoard()  {
 
   return (
     <div>
-    <h1>LIST</h1>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="/home">Tablero</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="/Players">Jugadores</Nav.Link>
+            <Nav.Link href="/Board">Puntacion</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    <h1>Lista</h1>
     <CardGroup>
-    <Card  style={{ width: '18rem' }}>
+    <Card >
     <Card.Header>Jugador1</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j1}>
@@ -126,7 +111,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j2}>
@@ -136,7 +121,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j2}>
@@ -146,7 +131,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j2}>
@@ -161,7 +146,7 @@ function ShowBoard()  {
     <br/>
 
     <CardGroup>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador1</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite2j1}>
@@ -171,7 +156,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite2j2}>
@@ -181,7 +166,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j2}>
@@ -191,7 +176,7 @@ function ShowBoard()  {
     </Form>
     </Card.Text>
     </Card>
-    <Card  style={{ width: '18rem' }}>
+    <Card   >
     <Card.Header>Jugador2</Card.Header>
     <Card.Text>
     <Form  onSubmit={handleSubmite1j2}>

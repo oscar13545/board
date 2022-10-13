@@ -62,7 +62,7 @@ function Board()  {
           <div>
           <Container>
             <Row>
-            <Col>
+            <Col >
             <Card className="rightCard">
               <Card.Body>
               <Card.Title className="NameEq">LOCAL </Card.Title>
@@ -70,10 +70,10 @@ function Board()  {
 
               <Card.Text>
               <Row> 
-                <Col lg={2} md={2} sm={2} xs={2}>
+                <Col lg={3} md={2} sm={2} xs={2}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.nume1j1))} disabled/>
                 </Col>
-                <Col lg={10} md={6} sm={12} xs={12}>
+                <Col lg={9} md={6} sm={12} xs={12}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.name1j1))} disabled/>
                 </Col>
               </Row>
@@ -91,10 +91,10 @@ function Board()  {
 
             <Card.Text>
               <Row> 
-                <Col lg={2} md={2} sm={2} xs={2}>
+                <Col lg={3} md={2} sm={2} xs={2}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.nume1j2))} disabled/>
                 </Col>
-                <Col lg={10} md={6} sm={12} xs={12}>
+                <Col lg={9} md={6} sm={12} xs={12}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player1.map(play1=> (play1.data.name1j2))} disabled/>
                 </Col>
               </Row>
@@ -114,20 +114,21 @@ function Board()  {
           </Col>
 
 
-        <Col> 
+        <Col lg={5}> 
         <Card className='Center'>
         <Card.Body>
           <Card.Title className="NameTor">Torneo</Card.Title>
           <Container>
-            <Row><Col className='Points'>{tablero.map(table=> (<div>{table.data.PuntacionEq1}</div>))}</Col><Col></Col>
-            <Col className='Points'>{tablero.map(table=> (<div>{table.data.PuntacionEq2}</div>))}</Col></Row>
+            <Row>
+            <Col lg={5} md={5} sm={5}><Form.Control className="Points" type="text" value={tablero.map(table=> (table.data.PuntacionEq1))} disabled/></Col><Col></Col>
+            <Col lg={5} md={5} sm={5}><Form.Control className="Points" type="text" value={tablero.map(table=> (table.data.PuntacionEq2))} disabled/></Col></Row>
             <br/>
             <br/>
             <br/>
             <br/>
             <br/>
             <br/>
-            <Row><Col className='Cuarto'></Col></Row>
+            <Row><Col text-align="center"><Form.Control className="Cuarto" type="text" value={tablero.map(table=> (table.data.Cuarto))} disabled/></Col></Row>
             <br/>
             <br/>
             <br/>
@@ -153,10 +154,10 @@ function Board()  {
 
               <Card.Text>
               <Row> 
-                <Col lg={2} md={1} sm={1} xs={1}>
+                <Col lg={3} md={1} sm={1} xs={1}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.nume2j1))} disabled/>
                 </Col>
-                <Col lg={10} md={6} sm={12} xs={12}>
+                <Col lg={9} md={6} sm={12} xs={12}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.name2j1))} disabled />
                 </Col>
               </Row>
@@ -173,10 +174,10 @@ function Board()  {
             </Card.Text>
             <Card.Text>
               <Row> 
-                <Col lg={2} md={1} sm={1} xs={1}>
+                <Col lg={3} md={1} sm={1} xs={1}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.nume2j2))} disabled/>
                 </Col>
-                <Col lg={10} md={6} sm={12} xs={12}>
+                <Col lg={9} md={6} sm={12} xs={12}>
                   <Form.Control className=  "FormColor" type="text"  size="10" value={Player2.map(play2=> (play2.data.name2j2))} disabled />
                 </Col>
               </Row>
