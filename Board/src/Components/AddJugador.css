@@ -1,0 +1,11 @@
+.Information {
+    overflow: hidden;
+    size: 10px;
+    margin: 100px;
+    float: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }

@@ -1,0 +1,73 @@
+@import url('http://fonts.cdnfonts.com/css/ds-digital');
+body{
+    background: rgb(84, 81, 100) !important;
+    
+}
+
+.rightCard {
+    background: rgb(84, 81, 100) !important;
+    border: rgb(47, 47, 48) !important;
+}
+
+
+.leftCard {
+    background: rgb(84, 81, 100) !important;
+    border: rgb(47, 47, 48) !important;
+}
+
+.Center {
+    background: rgb(84, 81, 100) !important;
+    border: rgb(47, 47, 48) !important;
+}
+
+.FormColor {
+    background: rgb(47, 47, 48) !important;
+    border: rgb(47, 47, 48) !important;
+    color: white;
+}
+
+.nolink1 {
+    color: black !important;
+    text-decoration: none !important; /* no underline */
+}
+
+
+.NameEq {
+    color: white!important;
+    text-align: center;
+    font-size: 40px;
+}
+.NameEq1 {
+    color: rgb(155, 155, 22)!important;
+    text-align: center;
+    font-size: 20px;
+}
+
+.NameTor {
+    color: white!important;
+    text-decoration: none !important; /* no underline */
+    text-align: center;
+    font-size: 60px;
+}
+
+.Points {
+    color: red!important;
+    text-align: center !important;
+    border: rgb(47, 47, 48) !important;
+    font-size: 120px;
+    font-family: 'DS-Digital', sans-serif;
+    background: rgb(47, 47, 48) !important;
+}
+
+.Cuarto {
+    color: orange!important;
+    text-align: center !important;
+    font-size: 70px;
+    background: rgb(47, 47, 48) !important;
+    font-family: 'DS-Digital', sans-serif;
+    border: rgb(47, 47, 48) !important;
+    margin: 1px 1px 100px 150px;
+    background: rgb(47, 47, 48) ;
+    width: 30%;
+
+}

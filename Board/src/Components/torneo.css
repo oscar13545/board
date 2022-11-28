@@ -1,0 +1,8 @@
+.nolink {
+    color: black !important;
+    text-decoration: none !important; /* no underline */
+}
+
+.ganador {
+    background-color: green !important;
+}
