@@ -1,73 +1,91 @@
-@import url('http://fonts.cdnfonts.com/css/ds-digital');
-body{
-    background: rgb(84, 81, 100) !important;
-    
+@import url("http://fonts.cdnfonts.com/css/ds-digital");
+
+/* Optional: Center text within the column */
+.text-center {
+  margin: 0 auto;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(84, 81, 100, 0.7); /* Adjust the color and transparency as needed */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+body {
+  background: url("../../../public/backGTest.jpeg") center center/cover no-repeat;
 }
 
 .rightCard {
-    background: rgb(84, 81, 100) !important;
-    border: rgb(47, 47, 48) !important;
+  background: rgba(
+    84,
+    81,
+    100,
+    0.97
+  ) !important; /* Adjust the last value (0.8) for transparency */
+  border: rgb(47, 47, 48) !important;
 }
 
-
 .leftCard {
-    background: rgb(84, 81, 100) !important;
-    border: rgb(47, 47, 48) !important;
+  background: rgb(84, 81, 100) !important;
+  border: rgb(47, 47, 48) !important;
 }
 
 .Center {
-    background: rgb(84, 81, 100) !important;
-    border: rgb(47, 47, 48) !important;
+  background: rgb(84, 81, 100, 0.97) !important;
+  border: rgb(47, 47, 48) !important;
 }
 
 .FormColor {
-    background: rgb(47, 47, 48) !important;
-    border: rgb(47, 47, 48) !important;
-    color: white;
+  background: rgb(47, 47, 48) !important;
+  border: rgb(47, 47, 48) !important;
+  color: white;
+  size: 3px !important;
 }
 
 .nolink1 {
-    color: black !important;
-    text-decoration: none !important; /* no underline */
+  color: black !important;
+  text-decoration: none !important; /* no underline */
 }
-
 
 .NameEq {
-    color: white!important;
-    text-align: center;
-    font-size: 40px;
+  color: white !important;
+  text-align: center;
+  font-size: 40px;
 }
 .NameEq1 {
-    color: rgb(155, 155, 22)!important;
-    text-align: center;
-    font-size: 20px;
+  color: rgb(155, 155, 22) !important;
+  text-align: center;
+  font-size: 20px;
 }
 
 .NameTor {
-    color: white!important;
-    text-decoration: none !important; /* no underline */
-    text-align: center;
-    font-size: 60px;
+  color: white !important;
+  text-decoration: none !important; /* no underline */
+  text-align: center;
+  font-size: 60px;
 }
 
 .Points {
-    color: red!important;
-    text-align: center !important;
-    border: rgb(47, 47, 48) !important;
-    font-size: 120px;
-    font-family: 'DS-Digital', sans-serif;
-    background: rgb(47, 47, 48) !important;
+  color: red !important;
+  text-align: center !important;
+  border: rgb(47, 47, 48) !important;
+  font-size: 120px;
+  font-family: "DS-Digital", sans-serif;
+  background: rgb(47, 47, 48) !important;
 }
 
 .Cuarto {
-    color: orange!important;
-    text-align: center !important;
-    font-size: 70px;
-    background: rgb(47, 47, 48) !important;
-    font-family: 'DS-Digital', sans-serif;
-    border: rgb(47, 47, 48) !important;
-    margin: 1px 1px 100px 150px;
-    background: rgb(47, 47, 48) ;
-    width: 30%;
+  color: orange !important;
+  text-align: center !important;
+  font-size: 70px;
+  background: rgb(47, 47, 48) !important;
+  font-family: "DS-Digital", sans-serif;
+  border: rgb(47, 47, 48) !important;
 
+  background: rgb(47, 47, 48);
 }
